@@ -1,8 +1,35 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.scss';
+import { getSortedPostsData } from '../lib/posts';
 
-export default function Home() {
+// This is an example of getServerSideProps. It will be called at request time.
+// Because getServerSideProps is called at request time, its parameter (context) contains request specific parameters.
+// You should use getServerSideProps only if you need to pre-render a page whose data must be fetched at request time.
+// Time to first byte (TTFB) will be slower than getStaticProps because the server must compute the result on every request,
+// and the result cannot be cached by a CDN without extra configuration.
+// You CAN NOT export getServerSideProps from a NON-PAGE file. This is a page file so we can.
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       // props for your component
+//     },
+//   };
+// }
+
+
+// You CANNOT export getStaticProps from a NON-PAGE file. This is a page file so we can.
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  console.log(allPostsData);
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -14,9 +41,22 @@ export default function Home() {
           at <a target={"_blank"} href={"https://webonise.com"}>Webonise Lab</a> and a tech enthusiast.
         </p>
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          (This is a sample website.)
         </p>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog Posts</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
       </section>
     </Layout>
   );
