@@ -28,3 +28,12 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# JetBrains
+.idea/*
+
+# VSCode
+.vscode/*
+
+# Windows
+Thumbs.db
