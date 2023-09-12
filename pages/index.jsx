@@ -42,8 +42,7 @@ export default function Home({ allPostsData }) {
           Hi, I'm <strong>Andrew Tite</strong>.
         </p>
         <p>
-          I'm a Full-Stack Developer at <a target={"_blank"} href={"https://webonise.com"}>Webonise Lab</a>
-          and a tech enthusiast.
+          I'm a Full-Stack Developer at <a target={"_blank"} href={"https://webonise.com"}>Webonise Lab</a> and a tech enthusiast.
         </p>
         <p>
           (This is a sample website.)
