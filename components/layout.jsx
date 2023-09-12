@@ -38,8 +38,8 @@ export default function Layout({ children, home }) {
               priority
               src={'/images/profile.jpg'}
               className={utilStyles.borderCircle}
-              height={144}
-              width={144}
+              height={244}
+              width={244}
               alt={name}
             />
             <h1 className={utilStyles.heading2Xl}>
@@ -59,10 +59,8 @@ export default function Layout({ children, home }) {
               />
             </Link>
             <h2 className={utilStyles.headingLg}>
-              <Link href={'/'}>
-                <a className={utilStyles.colorInherit}>
-                  {name}
-                </a>
+              <Link href={'/'} className={utilStyles.colorInherit}>
+                {name}
               </Link>
             </h2>
           </>

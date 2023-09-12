@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.scss';
 import { getSortedPostsData } from '../lib/posts';
+import Link from "next/link";
+import Date from "../components/date";
 
 // This is an example of getServerSideProps. It will be called at request time.
 // Because getServerSideProps is called at request time, its parameter (context) contains request specific parameters.
@@ -37,23 +39,33 @@ export default function Home({ allPostsData }) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>
-          Hi, I'm <strong>Andrew Tite</strong>. I'm a software engineer
-          at <a target={"_blank"} href={"https://webonise.com"}>Webonise Lab</a> and a tech enthusiast.
+          Hi, I'm <strong>Andrew Tite</strong>.
+        </p>
+        <p>
+          I'm a Full-Stack Developer at <a target={"_blank"} href={"https://webonise.com"}>Webonise Lab</a>
+          and a tech enthusiast.
         </p>
         <p>
           (This is a sample website.)
         </p>
+      </section>
+      <section className={utilStyles.headingMd} style={{ margin: '60px 0'}}>
+        <Link href={"/posts/page-that-does-not-exist-but-you-are-trying-it-anyway"}>
+          <strong>
+            Page that does not exist &rarr;&rarr;&rarr;
+          </strong>
+        </Link>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog Posts</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
+              <Link href={`/posts/${id}`}>{title}</Link>
+              <br/>
+              <small className={utilStyles.lightText}>
+                <Date dateString={date}/>
+              </small>
             </li>
           ))}
         </ul>
