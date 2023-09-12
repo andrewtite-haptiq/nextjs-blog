@@ -1,5 +1,5 @@
 # Sample Next.js Blog
-<p style="margin-top: -20px;color: grey;font-style: italic;">Andrew Tite, Full-Stack Developer, Webonise Lab</p>
+Andrew Tite, Full-Stack Developer, Webonise Lab
 
 This is a sample blog built with Next.js and Markdown to demonstrate the use of Next.js for a simple blog. 
 
